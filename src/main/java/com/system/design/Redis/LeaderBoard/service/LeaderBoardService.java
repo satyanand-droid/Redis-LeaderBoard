@@ -23,8 +23,8 @@ public class LeaderBoardService {
     return Optional.ofNullable(zSetOperations.score(LeaderboardKey, name));
   }
 
-  public Optional<Long> getPlayerRank(String name) {
-    Long rank = zSetOperations.reverseRank(LeaderboardKey, name);
-    return Optional.ofNullable(rank);
+  public Long getPlayerRank(String name) {
+    Optional<Long> rank = Optional.ofNullable(zSetOperations.reverseRank(LeaderboardKey, name));
+    return rank.map(aLong -> aLong + 1).orElse(0L);
   }
 }
