@@ -11,8 +11,8 @@ public class LeaderBoardService {
   private static final String LeaderboardKey = "LEADERBOARD";
   @Autowired private ZSetOperations<String, String> zSetOperations;
 
-  public void addPlayer(String playerName, double score) {
-    zSetOperations.add(LeaderboardKey, playerName, score);
+  public void updateScore(String playerName, double score) {
+    zSetOperations.incrementScore(LeaderboardKey, playerName, score);
   }
 
   public Optional<Set<String>> getTopNPlayer(int top) {

@@ -13,10 +13,10 @@ public class LeaderBoardController {
 
   @Autowired LeaderBoardService leaderboardService;
 
-  @PostMapping("/add")
-  public String addPlayer(@RequestParam String name, @RequestParam Double score) {
-    leaderboardService.addPlayer(name, score);
-    return "player added";
+  @PostMapping("/updateScore")
+  public String updateScore(@RequestParam String name, @RequestParam Double score) {
+    leaderboardService.updateScore(name, score);
+    return "score updated";
   }
 
   @GetMapping("top/{count}")
